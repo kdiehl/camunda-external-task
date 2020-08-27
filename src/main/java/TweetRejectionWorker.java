@@ -20,7 +20,15 @@ public class TweetRejectionWorker {
 			System.out.println("Sorry your tweet has been rejected! " + content);
 			Map<String, Object> variables = new HashMap<>();
 			variables.put("notificationTimestamp", new Date());
-			externalTaskService.complete(externalTask, variables);
+
+			double randomNumber = Math.random();
+			if(randomNumber < 0.3) {
+				externalTaskService.unlock(externalTask);
+			} else if(randomNumber < 0.4) {
+				throw new RuntimeException("Something went terribly wrong!");
+			} else {
+				externalTaskService.complete(externalTask, variables);
+			}
 		});
 		subscriptionBuilder.open();
 	}
