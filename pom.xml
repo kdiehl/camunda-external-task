@@ -27,6 +27,7 @@
 			<version>1.2.3</version>
 		</dependency>
 
+		<!-- Java 11 Support -->
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>

@@ -25,7 +25,8 @@ public class TweetRejectionWorker {
 			if(randomNumber < 0.3) {
 				externalTaskService.unlock(externalTask);
 			} else if(randomNumber < 0.4) {
-				throw new RuntimeException("Something went terribly wrong!");
+				// Should run into an incident
+				externalTaskService.handleFailure(externalTask, "error", "error", 0, 0);
 			} else {
 				externalTaskService.complete(externalTask, variables);
 			}
